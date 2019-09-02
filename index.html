@@ -197,15 +197,15 @@ limitations under the License.
       function listMajors() {
 
         gapi.client.sheets.spreadsheets.values.get({
-          spreadsheetId: '1ZqvgzMI8GKm484N2a-cuk_0nTqDpfh01dYeO5vt9HYE',
-          range: 'Sheet4!A2:B',
+          spreadsheetId: '1714xKi8gdL46RrHgiDXRvhJWE7DK8KJnw33w3YFm4to',
+          range: 'Sheet4!A2:D',
         }).then(function(response) {
           var range = response.result;
           if (range.values.length > 0) {
             for (i = 0; i < range.values.length; i++) {
               var row = range.values[i];
               // Print columns A and E, which correspond to indices 0 and 4.
-              appendPre(row[0],row[1]);
+              appendPre(row[2],row[0]);
             }
           } else {
             appendPre('No data found.');
