@@ -125,13 +125,11 @@ limitations under the License.
         // var pre = document.getElementById('content');
         // var textContent = document.createTextNode(message + '\n');
         // pre.appendChild(textContent);
-
         // var img = document.getElementById('img');
         // var run = document.createElement('canvas');
         // run.setAttribute('id', message)
         // img.appendChild(run)
         // setImageToCanvas(message)
-
         var table = document.getElementById('tableE');
         var row = document.createElement('tr');
         var bibidE = document.createElement('td');
@@ -141,8 +139,8 @@ limitations under the License.
         var canvas = document.createElement('canvas');
         canvas.setAttribute('id', bibid);
         canvas.setAttribute('style', 'display:block');
-        canvas.setAttribute('width', '475px');
-        canvas.setAttribute('height', '475px');
+        canvas.setAttribute('width', '640px');
+        canvas.setAttribute('height', '640px');
         var ctx = canvas.getContext('2d');
         row.appendChild(bibidE)
         row.appendChild(distanceE)
@@ -153,35 +151,30 @@ limitations under the License.
         setImageToCanvas(img, canvas, ctx, bibid, distance, bibName)  
         table.appendChild(row)
       }
-
       function setImageToCanvas(img, canvas, ctx, bibid, distance, bibName) {
         img.onload = () => {
             ctx.scale(0.5, 0.5);
             DrawOverlay(canvas, ctx, img);
             DynamicText(canvas, ctx, img, bibid, distance, bibName)
         };
-        img.src = 'run2.jpg';   
+        img.src = 'run3.jpg';   
       }
-
       function DrawOverlay(canvas, ctx, img) {
         ctx.drawImage(img,0,0);
         ctx.fillStyle = 'rgba(30, 144, 255, 0.0)';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
       }
-
       function DrawText(ctx) {
         ctx.fillStyle = "white";
         ctx.textBaseline = 'middle';
-        ctx.font = "170px 'Arial'";
+        ctx.font = "215px 'Arial'";
         // ctx.fillText(text_title, 50, 50);
       }
-
       function DrawBib(ctx) {
         ctx.fillStyle = "black";
         ctx.textBaseline = 'middle';
-        ctx.font = "40px 'Arial'";        
+        ctx.font = "55px 'Arial'";        
       }
-
       function DynamicText(canvas, ctx, img, bibid, distance, bibName) {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         DrawOverlay(canvas, ctx, img);
@@ -191,20 +184,16 @@ limitations under the License.
         s = distanceC.split('.')
         s[0] = ('0' + s[0]).slice(-2)
         distanceC = s[0] + '.' + s[1]
-        ctx.fillText(distanceC, 270, 480);
-
+        ctx.fillText(distanceC, 370, 635);
         DrawBib(ctx)
         bibT = bibid + ' : ' + bibName
-        ctx.fillText(bibT, 152, 320);
+        ctx.fillText(bibT, 210, 428);
       }
-
-
       /**
        * Print the names and majors of students in a sample spreadsheet:
        * https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/edit
        */
       function listMajors() {
-
         gapi.client.sheets.spreadsheets.values.get({
           spreadsheetId: '1714xKi8gdL46RrHgiDXRvhJWE7DK8KJnw33w3YFm4to',
           range: 'สะสมระยะ รวม!A2:D',
