@@ -121,7 +121,7 @@ limitations under the License.
        *
        * @param {string} message Text to be placed in pre element.
        */
-      function appendPre(bibid, distance) {
+      function appendPre(bibid, distance, bibName) {
         // var pre = document.getElementById('content');
         // var textContent = document.createTextNode(message + '\n');
         // pre.appendChild(textContent);
@@ -150,17 +150,17 @@ limitations under the License.
         
         var img = new Image();
         img.crossOrigin="anonymous";
-        setImageToCanvas(img, canvas, ctx, bibid, distance)  
+        setImageToCanvas(img, canvas, ctx, bibid, distance, bibName)  
         table.appendChild(row)
       }
 
-      function setImageToCanvas(img, canvas, ctx, bibid, distance) {
+      function setImageToCanvas(img, canvas, ctx, bibid, distance, bibName) {
         img.onload = () => {
             ctx.scale(0.5, 0.5);
             DrawOverlay(canvas, ctx, img);
-            DynamicText(canvas, ctx, img, bibid, distance)
+            DynamicText(canvas, ctx, img, bibid, distance, bibName)
         };
-        img.src = 'run.jpg';   
+        img.src = 'run2.jpg';   
       }
 
       function DrawOverlay(canvas, ctx, img) {
@@ -172,11 +172,17 @@ limitations under the License.
       function DrawText(ctx) {
         ctx.fillStyle = "white";
         ctx.textBaseline = 'middle';
-        ctx.font = "50px 'Montserrat'";
+        ctx.font = "150px 'Montserrat'";
         // ctx.fillText(text_title, 50, 50);
       }
 
-      function DynamicText(canvas, ctx, img, bibid, distance) {
+      function DrawBib(ctx) {
+        ctx.fillStyle = "black";
+        ctx.textBaseline = 'middle';
+        ctx.font = "40px 'Montserrat'";        
+      }
+
+      function DynamicText(canvas, ctx, img, bibid, distance, bibName) {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         DrawOverlay(canvas, ctx, img);
         DrawText(ctx); 
@@ -185,8 +191,11 @@ limitations under the License.
         s = distanceC.split('.')
         s[0] = ('0' + s[0]).slice(-2)
         distanceC = s[0] + '.' + s[1]
-        text_title = this.value;
-        ctx.fillText(distanceC, 412, 475);
+        ctx.fillText(distanceC, 260, 482);
+
+        DrawBib(ctx)
+        bibT = bibid + ' : ' + bibName
+        ctx.fillText(bibT, 152, 322);
       }
 
 
@@ -205,7 +214,7 @@ limitations under the License.
             for (i = 0; i < range.values.length; i++) {
               var row = range.values[i];
               // Print columns A and E, which correspond to indices 0 and 4.
-              appendPre(row[2],row[0]);
+              appendPre(row[2],row[0], row[1]);
             }
           } else {
             appendPre('No data found.');
