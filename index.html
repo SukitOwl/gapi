@@ -172,14 +172,14 @@ limitations under the License.
       function DrawText(ctx) {
         ctx.fillStyle = "white";
         ctx.textBaseline = 'middle';
-        ctx.font = "150px 'Montserrat'";
+        ctx.font = "170px 'Arial'";
         // ctx.fillText(text_title, 50, 50);
       }
 
       function DrawBib(ctx) {
         ctx.fillStyle = "black";
         ctx.textBaseline = 'middle';
-        ctx.font = "40px 'Montserrat'";        
+        ctx.font = "40px 'Arial'";        
       }
 
       function DynamicText(canvas, ctx, img, bibid, distance, bibName) {
@@ -191,11 +191,11 @@ limitations under the License.
         s = distanceC.split('.')
         s[0] = ('0' + s[0]).slice(-2)
         distanceC = s[0] + '.' + s[1]
-        ctx.fillText(distanceC, 260, 482);
+        ctx.fillText(distanceC, 270, 482);
 
         DrawBib(ctx)
         bibT = bibid + ' : ' + bibName
-        ctx.fillText(bibT, 152, 322);
+        ctx.fillText(bibT, 152, 320);
       }
 
 

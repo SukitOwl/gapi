@@ -15,3 +15,6 @@ Edit distance position
 
 
 Add bib info
+
+
+Fixed font
