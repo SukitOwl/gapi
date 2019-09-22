@@ -182,7 +182,10 @@ limitations under the License.
         distanceC = parseFloat(distance)
         distanceC = distanceC.toFixed(2)
         s = distanceC.split('.')
-        s[0] = ('0' + s[0]).slice(-2)
+        if (s[0].length < 3) {
+          s[0] = ('0' + s[0]).slice(-2)
+        }
+        
         distanceC = s[0] + '.' + s[1]
         ctx.fillText(distanceC, 370, 635);
         DrawBib(ctx)

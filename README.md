@@ -21,3 +21,6 @@ Fixed font
 
 
 adjust position
+
+
+Receive more 2 digit
